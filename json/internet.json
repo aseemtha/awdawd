@@ -1,0 +1,73 @@
+{ 
+  
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": " Share of the population using the Internet(%)",
+    "width": 500,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Sancho17/FIT3179/main/json/countries.topojson",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "projection": {"type": "equalEarth"},
+    "params": [
+      {
+        "name": "Internet_of_Country",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "name": "% of population using the internet "
+        }  }
+      ],
+    "layer":[
+      {
+        "transform": [
+          {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
+        ],
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+        "encoding": {
+          "tooltip": {
+            "field": "note"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/Sancho17/FIT3179/main/editedcsv.csv"
+              },
+              "key": "Country",
+              "fields": ["Internet"]
+            }
+          },
+          {"filter": "datum.Internet > Internet_of_Country"}
+          
+        ],
+        "mark": {"type": "geoshape", "stroke": "white"},
+        "encoding": {
+          "color": {
+            "field": "Internet",
+            "title": "%",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [25, 50, 75],
+           
+              "range": ["#ffd8cb", "#f98664", "#ee5735", "#e00000"]
+            }
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "Internet", "type": "quantitative", "title": "Internet access:"}
+           
+          ]
+        }
+      }
+    ]
+    
+  }
