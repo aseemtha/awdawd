@@ -1,0 +1,48 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
+    "title": "Unemployment rates throughout the world", 
+    "width": 400, 
+    "height": 300, 
+    "data": {
+      "values": [
+        {"a": "Kosovo", "b": 30.34},
+        {"a": "Greece", "b": 21.49},
+        {"a": "Australia", "b": 5.59},
+        {"a": "New Zealand", "b": 4.74},
+        {"a": "United States", "b": 4.36},
+        {"a": "United Kingdom", "b": 4.33},
+        {"a": "Qatar", "b": 0.14},
+        {"a": "China", "b": 3.9},
+        {"a": "Niger", "b": 7.7},
+        {"a": "South Africa", "b": 27.04},
+        {"a": "Rwanda", "b":17.36},
+        {"a": "Cambodia", "b":0.14}
+        
+      ]
+    },
+    "encoding": {
+      "y": {"field": "a", "type": "nominal" ,"title": "Country"},
+      "color": {"value": "#fa0000"},
+      "x": {"field": "b", "title": "Unemployment rate %", "type": "quantitative", "scale": {"domain": [0, 35]}}
+    
+
+    },
+    "layer": [{
+      "mark": "bar"
+    }, {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3
+      },
+   
+  
+      "encoding": {
+        "text": {"field": "b", "type": "quantitative"}
+      }
+    }]
+    
+  }
+ 
