@@ -39,7 +39,7 @@
             "lookup": "properties.NAME",
             "from": {
               "data": {
-                "url": "https://raw.githubusercontent.com/Sancho17/FIT3179/main/editedcsv.csv"
+                "url": "https://raw.githubusercontent.com/aseemtha/awdawd/main/editedcsv.csv"
               },
               "key": "Country",
               "fields": ["emissionsCapita"]
