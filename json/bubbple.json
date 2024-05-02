@@ -5,7 +5,7 @@
     "title": "GDP vs life expectancy (GDP per capita)", 
     "data": { 
       "url": 
-  "https://raw.githubusercontent.com/Sancho17/FIT3179/main/editedcsv.csv" 
+  "https://raw.githubusercontent.com/aseemtha/awdawd/main/editedcsv.csv" 
     }, 
     "params": [ 
       { 
